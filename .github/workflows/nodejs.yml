@@ -25,6 +25,21 @@ jobs:
           CI: true
       - name: Release
         uses: codfish/semantic-release-action@master
+        with:
+          branches: |
+            [
+              'main',
+              'next',
+              'next-major',
+              {
+                name: 'beta',
+                prerelease: true
+              },
+              {
+                name: 'alpha',
+                prerelease: true
+              }
+            ]
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
